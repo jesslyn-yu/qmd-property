@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Listing — QMD Property</title>
+  <meta name="description" content="Full details, photos and investment statistics for this QMD Property listing. Enquire now with our team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">QMD</span><span>QMD Property</span></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="buy.html" class="active">Buy</a>
+        <a href="sell.html">Sell</a>
+        <a href="property-management.html">Property Management</a>
+        <a href="market-insights.html">Market Insights</a>
+        <span class="nav__cta"><a class="btn btn--primary" href="contact.html">Contact Us</a></span>
+      </nav>
+      <button class="nav__toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:40px">
+    <div class="container" id="listing-root"><!-- rendered by listing.js --></div>
+  </section>
+
+  <!-- INVESTMENT CALCULATOR (pre-filled for this property) -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Investment Calculator</span>
+        <h2>Estimate your returns on this property</h2>
+        <p class="lead">Pre-filled with this listing's price and estimated weekly rent. Adjust the inputs to model your own scenario.</p>
+      </div>
+      <div class="calc">
+        <!-- INPUTS -->
+        <form class="form-card form" id="calc-form">
+          <div class="row">
+            <div class="field-group"><label for="c-price">Purchase price ($)</label><input id="c-price" type="number" min="0" step="1000" value="850000"></div>
+            <div class="field-group"><label for="c-rent">Weekly rent ($)</label><input id="c-rent" type="number" min="0" step="5" value="780"></div>
+          </div>
+          <div class="field-group">
+            <label for="c-deposit">Deposit (<span data-mirror="c-deposit">20</span>%)</label>
+            <input id="c-deposit" type="range" min="5" max="100" step="1" value="20">
+          </div>
+          <div class="field-group">
+            <label for="c-costs">Purchase costs / stamp duty (<span data-mirror="c-costs">5</span>%)</label>
+            <input id="c-costs" type="range" min="0" max="10" step="0.5" value="5">
+          </div>
+          <div class="row">
+            <div class="field-group"><label for="c-rate">Interest rate (% p.a.)</label><input id="c-rate" type="number" min="0" step="0.1" value="6.2"></div>
+            <div class="field-group"><label for="c-growth">Capital growth (% p.a.)</label><input id="c-growth" type="number" min="0" step="0.1" value="5"></div>
+          </div>
+          <div class="field-group">
+            <label for="c-expenses">Operating expenses (<span data-mirror="c-expenses">25</span>% of rent)</label>
+            <input id="c-expenses" type="range" min="0" max="60" step="1" value="25">
+          </div>
+          <p class="form__note">Operating expenses cover council rates, strata, insurance, management fees and maintenance. Interest is calculated as interest-only for illustration.</p>
+        </form>
+
+        <!-- RESULTS -->
+        <aside class="calc__results">
+          <h3 style="font-size:1.3rem;margin-bottom:10px">Your returns</h3>
+          <div class="result-row"><span class="label">Cash-on-cash return</span><span class="value big" id="r-coc">0.00%</span></div>
+          <div class="result-row"><span class="label">Capitalisation rate</span><span class="value" id="r-cap">0.00%</span></div>
+          <div class="result-row"><span class="label">Total ROI (incl. growth)</span><span class="value" id="r-roi">0.00%</span></div>
+          <div class="result-row"><span class="label">Annual pre-tax cash flow</span><span class="value" id="r-cashflow" style="font-size:1.3rem">$0/yr</span></div>
+          <div class="result-row"><span class="label">Net operating income</span><span class="value" id="r-noi" style="font-size:1.3rem">$0/yr</span></div>
+          <div class="result-row"><span class="label">Total cash invested</span><span class="value" id="r-invested" style="font-size:1.3rem">$0</span></div>
+          <p class="form__note" style="margin-top:14px">Estimates only. Excludes tax, depreciation and loan principal. Always seek independent financial advice.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRE NOW -->
+  <section class="section" id="enquire" style="background:var(--navy-900);padding-top:60px">
+    <div class="container">
+      <div class="grid grid--2" style="align-items:start">
+        <div class="reveal">
+          <span class="eyebrow">Enquire Now</span>
+          <h2 id="enquire-heading">Enquire about this property</h2>
+          <p class="lead">Send us your details and one of our investment specialists will be in touch with a full information pack, rental appraisal and inspection options.</p>
+          <ul class="spec-list" style="grid-template-columns:1fr">
+            <li><span>Response time</span><span>Within 1 business day</span></li>
+            <li><span>Direct line</span><span>+61 2 9000 0000</span></li>
+            <li><span>Email</span><span>invest@qmdproperty.com.au</span></li>
+          </ul>
+        </div>
+        <div class="form-card reveal" data-delay="1">
+          <!-- FORMSPREE: replace your-form-id with your real Formspree form ID -->
+          <form class="form" action="https://formspree.io/f/your-form-id" method="POST" data-formspree>
+            <input type="hidden" name="_subject" id="enquiry-subject" value="New property enquiry">
+            <div class="form-success" role="status">Thanks — your enquiry has been sent. We'll be in touch shortly.</div>
+            <div class="row">
+              <div class="field-group"><label for="en-name">Name</label><input id="en-name" type="text" name="name" required placeholder="Your full name"></div>
+              <div class="field-group"><label for="en-phone">Phone</label><input id="en-phone" type="tel" name="phone" required placeholder="04xx xxx xxx"></div>
+            </div>
+            <div class="field-group"><label for="en-email">Email</label><input id="en-email" type="email" name="email" required placeholder="you@email.com"></div>
+            <div class="field-group"><label for="en-msg">Enquiry message</label><textarea id="en-msg" name="message" required placeholder="I'd like more information about this property…"></textarea></div>
+            <button class="btn btn--primary btn--block" type="submit">Send enquiry</button>
+            <p class="form__note">By submitting you agree to be contacted by QMD Property. We never share your details.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__about"><a class="brand" href="index.html" style="margin-bottom:14px"><span class="brand__mark">QMD</span><span>QMD Property</span></a><p>Sydney's investor-first real estate agency. Data-driven advice for buying, selling and managing high-performing property.</p></div>
+      <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="buy.html">Buy</a><a href="sell.html">Sell</a></div>
+      <div><h4>Services</h4><a href="property-management.html">Property Management</a><a href="calculator.html">Investment Calculator</a><a href="market-insights.html">Market Insights</a><a href="contact.html">Contact</a></div>
+      <div><h4>Contact</h4><a href="mailto:invest@qmdproperty.com.au">invest@qmdproperty.com.au</a><a href="tel:+61290000000">+61 2 9000 0000</a><span class="muted" style="font-size:.9rem;display:block;padding-top:5px">Level 12, 1 Market St<br>Sydney NSW 2000</span></div>
+    </div>
+    <div class="container footer__bottom"><span>© <span data-year></span> QMD Property. All rights reserved.</span><span>Figures are indicative only and do not constitute financial advice.</span></div>
+  </footer>
+
+  <script src="js/listings-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/listing.js"></script>
+  <script src="js/calculator.js"></script>
+</body>
+</html>

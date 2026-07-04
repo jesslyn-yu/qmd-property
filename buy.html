@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy & Rent Property — QMD Property</title>
+  <meta name="description" content="Browse QMD Property's Sydney investment listings. Filter by price, suburb, type, ROI and buy or rent. Senior agent guidance at every step.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">QMD</span><span>QMD Property</span></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="buy.html" class="active">Buy</a>
+        <a href="sell.html">Sell</a>
+        <a href="property-management.html">Property Management</a>
+        <a href="market-insights.html">Market Insights</a>
+        <span class="nav__cta"><a class="btn btn--primary" href="contact.html">Contact Us</a></span>
+      </nav>
+      <button class="nav__toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container reveal in">
+      <nav class="breadcrumb"><a href="index.html">Home</a> / Buy</nav>
+      <span class="eyebrow">Buy & Rent</span>
+      <h1>Find the right property to buy or rent — guided by the numbers.</h1>
+      <p>Whether you're acquiring your first investment or expanding a portfolio, QMD helps you shortlist, analyse and secure properties that match your strategy. Our agents handle the research, due diligence and negotiation so you buy with confidence.</p>
+    </div>
+  </section>
+
+  <!-- BUY PROCESS FLOWCHART -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">The Buy Process</span><h2>How we guide you from brief to keys</h2></div>
+      <div class="flow">
+        <div class="flow__step reveal"><div class="n">1</div><h3>Strategy session</h3><p>We define your goals, budget and target returns, then map the right suburbs and property types.</p></div>
+        <div class="flow__step reveal" data-delay="1"><div class="n">2</div><h3>Search & shortlist</h3><p>Your agent sources on- and off-market listings and screens each one on yield, growth and risk.</p></div>
+        <div class="flow__step reveal" data-delay="2"><div class="n">3</div><h3>Due diligence</h3><p>Inspections, building reports, comparable sales and rental appraisals — checked before you commit.</p></div>
+        <div class="flow__step reveal" data-delay="3"><div class="n">4</div><h3>Negotiate & settle</h3><p>We negotiate the best terms, manage the contract and hand you the keys — then optionally manage it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTINGS + FILTERS -->
+  <section class="section" style="padding-top:30px">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">All Listings</span><h2>Browse available properties</h2></div>
+
+      <div class="toolbar reveal">
+        <div class="toolbar__grid">
+          <div class="field-group" style="grid-column: span 1;">
+            <label for="f-keyword">Search</label>
+            <input type="text" id="f-keyword" placeholder="Name, suburb…">
+          </div>
+          <div class="field-group">
+            <label for="f-suburb">Suburb</label>
+            <select id="f-suburb"><option value="">All suburbs</option></select>
+          </div>
+          <div class="field-group">
+            <label for="f-type">Property type</label>
+            <select id="f-type">
+              <option value="">All types</option>
+              <option>Apartment</option>
+              <option>House</option>
+              <option>Townhouse</option>
+              <option>Duplex</option>
+              <option>Studio</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="f-listing-type">Rent or buy</label>
+            <select id="f-listing-type">
+              <option value="">Buy & rent</option>
+              <option value="Buy">For sale</option>
+              <option value="Rent">For rent</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="f-price">Max price</label>
+            <select id="f-price">
+              <option value="">Any price</option>
+              <option value="600000">Up to $600k</option>
+              <option value="800000">Up to $800k</option>
+              <option value="1000000">Up to $1M</option>
+              <option value="1500000">Up to $1.5M</option>
+              <option value="2000000">Up to $2M</option>
+              <option value="3000000">Up to $3M</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="f-roi">Min ROI %</label>
+            <select id="f-roi">
+              <option value="">Any ROI</option>
+              <option value="8">8%+</option>
+              <option value="9">9%+</option>
+              <option value="10">10%+</option>
+              <option value="11">11%+</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="f-sort">Sort by</label>
+            <select id="f-sort">
+              <option value="">Featured</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+              <option value="yield-desc">Highest yield</option>
+              <option value="roi-desc">Highest ROI</option>
+            </select>
+          </div>
+          <div class="field-group" style="justify-content:flex-end">
+            <label>&nbsp;</label>
+            <button class="btn btn--ghost" id="f-reset" type="button">Reset filters</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-meta">
+        <span class="count" id="results-count"></span>
+        <span class="muted" style="font-size:.88rem">12 per page</span>
+      </div>
+
+      <div class="grid grid--3" id="listings-grid"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__about"><a class="brand" href="index.html" style="margin-bottom:14px"><span class="brand__mark">QMD</span><span>QMD Property</span></a><p>Sydney's investor-first real estate agency. Data-driven advice for buying, selling and managing high-performing property.</p></div>
+      <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="buy.html">Buy</a><a href="sell.html">Sell</a></div>
+      <div><h4>Services</h4><a href="property-management.html">Property Management</a><a href="calculator.html">Investment Calculator</a><a href="market-insights.html">Market Insights</a><a href="contact.html">Contact</a></div>
+      <div><h4>Contact</h4><a href="mailto:invest@qmdproperty.com.au">invest@qmdproperty.com.au</a><a href="tel:+61290000000">+61 2 9000 0000</a><span class="muted" style="font-size:.9rem;display:block;padding-top:5px">Level 12, 1 Market St<br>Sydney NSW 2000</span></div>
+    </div>
+    <div class="container footer__bottom"><span>© <span data-year></span> QMD Property. All rights reserved.</span><span>Figures are indicative only and do not constitute financial advice.</span></div>
+  </footer>
+
+  <script src="js/listings-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/buy.js"></script>
+</body>
+</html>

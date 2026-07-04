@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell Your Property — QMD Property</title>
+  <meta name="description" content="Sell with QMD Property. Free property appraisals, targeted marketing and expert negotiation to maximise your Sydney sale price.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">QMD</span><span>QMD Property</span></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="buy.html">Buy</a>
+        <a href="sell.html" class="active">Sell</a>
+        <a href="property-management.html">Property Management</a>
+        <a href="market-insights.html">Market Insights</a>
+        <span class="nav__cta"><a class="btn btn--primary" href="contact.html">Contact Us</a></span>
+      </nav>
+      <button class="nav__toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container reveal in">
+      <nav class="breadcrumb"><a href="index.html">Home</a> / Sell</nav>
+      <span class="eyebrow">Sell</span>
+      <h1>Sell for more, with less stress.</h1>
+      <p>QMD Property helps owners and investors sell at the right time and the right price. We start with an accurate, data-backed appraisal of your property, then craft a marketing and negotiation strategy designed to maximise your final result.</p>
+    </div>
+  </section>
+
+  <!-- SELL PROCESS FLOWCHART -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">The Sell Process</span><h2>Your selling journey, guided end to end</h2></div>
+      <div class="flow">
+        <div class="flow__step reveal"><div class="n">1</div><h3>Appraisal</h3><p>We assess your property against live comparable sales and market trends to set a realistic, ambitious price.</p></div>
+        <div class="flow__step reveal" data-delay="1"><div class="n">2</div><h3>Prep & marketing</h3><p>Styling advice, professional photography and a targeted campaign put your property in front of the right buyers.</p></div>
+        <div class="flow__step reveal" data-delay="2"><div class="n">3</div><h3>Campaign & inspections</h3><p>Your agent manages enquiries, opens and buyer feedback, keeping you informed at every step.</p></div>
+        <div class="flow__step reveal" data-delay="3"><div class="n">4</div><h3>Negotiate & settle</h3><p>We negotiate hard on your behalf and manage the contract through to a smooth settlement.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPRAISAL FORM -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--2" style="align-items:start">
+        <div class="reveal">
+          <span class="eyebrow">Free Appraisal</span>
+          <h2>Request your property appraisal</h2>
+          <p class="lead">Find out what your property is really worth in today's market. Tell us a few details and we'll prepare a complimentary, no-obligation appraisal.</p>
+          <ul class="spec-list" style="grid-template-columns:1fr">
+            <li><span>Appraisal cost</span><span>Free &amp; no obligation</span></li>
+            <li><span>Turnaround</span><span>Typically 2–3 business days</span></li>
+            <li><span>Covers</span><span>Sale estimate &amp; strategy</span></li>
+          </ul>
+        </div>
+        <div class="form-card reveal" data-delay="1">
+          <!-- FORMSPREE: replace your-form-id with your real Formspree form ID -->
+          <form class="form" action="https://formspree.io/f/your-form-id" method="POST" data-formspree>
+            <input type="hidden" name="_subject" value="New sell / appraisal request">
+            <div class="form-success" role="status">Thanks — your appraisal request has been sent. We'll be in touch soon.</div>
+            <div class="row">
+              <div class="field-group"><label for="s-name">Name</label><input id="s-name" type="text" name="name" required placeholder="Your full name"></div>
+              <div class="field-group"><label for="s-phone">Phone</label><input id="s-phone" type="tel" name="phone" required placeholder="04xx xxx xxx"></div>
+            </div>
+            <div class="field-group"><label for="s-email">Email</label><input id="s-email" type="email" name="email" required placeholder="you@email.com"></div>
+            <div class="field-group"><label for="s-address">Property address</label><input id="s-address" type="text" name="property_address" required placeholder="123 Example St, Suburb NSW"></div>
+            <div class="field-group"><label for="s-msg">Message</label><textarea id="s-msg" name="message" placeholder="Tell us about your property and timeframe…"></textarea></div>
+            <button class="btn btn--primary btn--block" type="submit">Request appraisal</button>
+            <p class="form__note">By submitting you agree to be contacted by QMD Property. We never share your details.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__about"><a class="brand" href="index.html" style="margin-bottom:14px"><span class="brand__mark">QMD</span><span>QMD Property</span></a><p>Sydney's investor-first real estate agency. Data-driven advice for buying, selling and managing high-performing property.</p></div>
+      <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="buy.html">Buy</a><a href="sell.html">Sell</a></div>
+      <div><h4>Services</h4><a href="property-management.html">Property Management</a><a href="calculator.html">Investment Calculator</a><a href="market-insights.html">Market Insights</a><a href="contact.html">Contact</a></div>
+      <div><h4>Contact</h4><a href="mailto:invest@qmdproperty.com.au">invest@qmdproperty.com.au</a><a href="tel:+61290000000">+61 2 9000 0000</a><span class="muted" style="font-size:.9rem;display:block;padding-top:5px">Level 12, 1 Market St<br>Sydney NSW 2000</span></div>
+    </div>
+    <div class="container footer__bottom"><span>© <span data-year></span> QMD Property. All rights reserved.</span><span>Figures are indicative only and do not constitute financial advice.</span></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Management — QMD Property</title>
+  <meta name="description" content="QMD Property's full-service property management for Sydney landlords — leasing, rental appraisals, maintenance and reporting, all returns-focused.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">QMD</span><span>QMD Property</span></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="buy.html">Buy</a>
+        <a href="sell.html">Sell</a>
+        <a href="property-management.html" class="active">Property Management</a>
+        <a href="market-insights.html">Market Insights</a>
+        <span class="nav__cta"><a class="btn btn--primary" href="contact.html">Contact Us</a></span>
+      </nav>
+      <button class="nav__toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container reveal in">
+      <nav class="breadcrumb"><a href="index.html">Home</a> / Property Management</nav>
+      <span class="eyebrow">Property Management</span>
+      <h1>Returns-focused management for hands-off landlords.</h1>
+      <p>QMD Property manages your investment as if it were our own — securing quality tenants, keeping vacancies low and protecting your asset. We start with an accurate rental appraisal, then handle leasing, rent collection, maintenance and compliance so you can stay completely hands-off.</p>
+    </div>
+  </section>
+
+  <!-- MANAGEMENT FLOWCHART -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">How It Works</span><h2>How QMD manages your property</h2></div>
+      <div class="flow">
+        <div class="flow__step reveal"><div class="n">1</div><h3>Rental appraisal</h3><p>We benchmark your property against the local rental market to set an optimal, competitive rent.</p></div>
+        <div class="flow__step reveal" data-delay="1"><div class="n">2</div><h3>Market & lease</h3><p>Professional listing, screening and reference checks secure reliable, long-term tenants quickly.</p></div>
+        <div class="flow__step reveal" data-delay="2"><div class="n">3</div><h3>Manage & maintain</h3><p>Rent collection, routine inspections, repairs and compliance are all handled on your behalf.</p></div>
+        <div class="flow__step reveal" data-delay="3"><div class="n">4</div><h3>Report & optimise</h3><p>Clear monthly statements plus periodic reviews to keep your yield and returns improving.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section" style="padding-top:30px">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">What's Included</span><h2>Everything a landlord needs</h2></div>
+      <div class="grid grid--3">
+        <div class="card feature reveal"><h3>Leasing &amp; tenant screening</h3><p>Marketing, viewings, applications and thorough background checks to place quality tenants fast.</p></div>
+        <div class="card feature reveal" data-delay="1"><h3>Rent &amp; arrears management</h3><p>Automated rent collection with proactive arrears follow-up to protect your cash flow.</p></div>
+        <div class="card feature reveal" data-delay="2"><h3>Inspections &amp; maintenance</h3><p>Routine inspections and a trusted trades network keep your property in top condition.</p></div>
+        <div class="card feature reveal"><h3>Rental appraisals</h3><p>Regular reviews ensure your rent keeps pace with the market and maximises return.</p></div>
+        <div class="card feature reveal" data-delay="1"><h3>Compliance &amp; safety</h3><p>We keep your property compliant with NSW tenancy and safety regulations.</p></div>
+        <div class="card feature reveal" data-delay="2"><h3>Reporting</h3><p>Transparent monthly statements and end-of-financial-year summaries for your accountant.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="section" style="background:var(--navy-900)">
+    <div class="container">
+      <div class="grid grid--2" style="align-items:start">
+        <div class="reveal">
+          <span class="eyebrow">Get Started</span>
+          <h2>Request a rental appraisal</h2>
+          <p class="lead">Considering switching managers or leasing for the first time? Send us your property details and we'll prepare a free rental appraisal and management proposal.</p>
+          <ul class="spec-list" style="grid-template-columns:1fr">
+            <li><span>Management fee</span><span>Competitive, transparent</span></li>
+            <li><span>Rental appraisal</span><span>Free of charge</span></li>
+            <li><span>Switching</span><span>We handle the handover</span></li>
+          </ul>
+        </div>
+        <div class="form-card reveal" data-delay="1">
+          <!-- FORMSPREE: replace your-form-id with your real Formspree form ID -->
+          <form class="form" action="https://formspree.io/f/your-form-id" method="POST" data-formspree>
+            <input type="hidden" name="_subject" value="New property management enquiry">
+            <div class="form-success" role="status">Thanks — your enquiry has been sent. We'll be in touch soon.</div>
+            <div class="row">
+              <div class="field-group"><label for="p-name">Name</label><input id="p-name" type="text" name="name" required placeholder="Your full name"></div>
+              <div class="field-group"><label for="p-phone">Phone</label><input id="p-phone" type="tel" name="phone" required placeholder="04xx xxx xxx"></div>
+            </div>
+            <div class="field-group"><label for="p-email">Email</label><input id="p-email" type="email" name="email" required placeholder="you@email.com"></div>
+            <div class="field-group"><label for="p-address">Property address</label><input id="p-address" type="text" name="property_address" required placeholder="123 Example St, Suburb NSW"></div>
+            <div class="field-group"><label for="p-msg">Message</label><textarea id="p-msg" name="message" placeholder="Tell us about your property and current arrangement…"></textarea></div>
+            <button class="btn btn--primary btn--block" type="submit">Request appraisal</button>
+            <p class="form__note">By submitting you agree to be contacted by QMD Property. We never share your details.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__about"><a class="brand" href="index.html" style="margin-bottom:14px"><span class="brand__mark">QMD</span><span>QMD Property</span></a><p>Sydney's investor-first real estate agency. Data-driven advice for buying, selling and managing high-performing property.</p></div>
+      <div><h4>Explore</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="buy.html">Buy</a><a href="sell.html">Sell</a></div>
+      <div><h4>Services</h4><a href="property-management.html">Property Management</a><a href="calculator.html">Investment Calculator</a><a href="market-insights.html">Market Insights</a><a href="contact.html">Contact</a></div>
+      <div><h4>Contact</h4><a href="mailto:invest@qmdproperty.com.au">invest@qmdproperty.com.au</a><a href="tel:+61290000000">+61 2 9000 0000</a><span class="muted" style="font-size:.9rem;display:block;padding-top:5px">Level 12, 1 Market St<br>Sydney NSW 2000</span></div>
+    </div>
+    <div class="container footer__bottom"><span>© <span data-year></span> QMD Property. All rights reserved.</span><span>Figures are indicative only and do not constitute financial advice.</span></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
