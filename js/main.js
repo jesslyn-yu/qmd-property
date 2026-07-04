@@ -170,10 +170,29 @@
       e.preventDefault();
       var success = form.querySelector(".form-success");
       var btn = form.querySelector("button[type=submit]");
+
+      // Lazily create an inline error message (no per-form HTML needed).
+      var showError = function () {
+        var box = form.querySelector(".form-error");
+        if (!box) {
+          box = document.createElement("div");
+          box.className = "form-error";
+          box.setAttribute("role", "alert");
+          box.textContent =
+            "Sorry, we couldn't send your message. Please try again, or email us at info@qmdproperty.com.";
+          form.insertBefore(box, form.firstChild);
+        }
+        box.classList.add("show");
+      };
+
       var done = function (ok) {
-        if (ok && success) {
-          success.classList.add("show");
+        var errorBox = form.querySelector(".form-error");
+        if (ok) {
+          if (success) success.classList.add("show");
+          if (errorBox) errorBox.classList.remove("show");
           form.reset();
+        } else {
+          showError();
         }
         if (btn) { btn.disabled = false; btn.textContent = btn.getAttribute("data-label") || "Send"; }
       };
