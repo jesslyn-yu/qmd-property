@@ -66,21 +66,23 @@
           </div>
           <div class="field-group">
             <label for="f-type">Property type</label>
-            <select id="f-type">
-              <option value="">All types</option>
-              <option>Apartment</option>
-              <option>House</option>
-              <option>Townhouse</option>
-              <option>Duplex</option>
-              <option>Studio</option>
-            </select>
+            <select id="f-type"><option value="">All types</option></select>
           </div>
           <div class="field-group">
             <label for="f-listing-type">Rent or buy</label>
             <select id="f-listing-type">
-              <option value="">Buy & rent</option>
-              <option value="Buy">For sale</option>
-              <option value="Rent">For rent</option>
+              <option value="residential">For sale</option>
+              <option value="rental">For rent</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="f-beds">Beds</label>
+            <select id="f-beds">
+              <option value="">Any</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+              <option value="4">4+</option>
             </select>
           </div>
           <div class="field-group">
@@ -96,23 +98,12 @@
             </select>
           </div>
           <div class="field-group">
-            <label for="f-roi">Min ROI %</label>
-            <select id="f-roi">
-              <option value="">Any ROI</option>
-              <option value="8">8%+</option>
-              <option value="9">9%+</option>
-              <option value="10">10%+</option>
-              <option value="11">11%+</option>
-            </select>
-          </div>
-          <div class="field-group">
             <label for="f-sort">Sort by</label>
             <select id="f-sort">
               <option value="">Featured</option>
               <option value="price-asc">Price: low to high</option>
               <option value="price-desc">Price: high to low</option>
-              <option value="yield-desc">Highest yield</option>
-              <option value="roi-desc">Highest ROI</option>
+              <option value="beds-desc">Most bedrooms</option>
             </select>
           </div>
           <div class="field-group" style="justify-content:flex-end">
@@ -142,7 +133,7 @@
     <div class="container footer__bottom"><span>© <span data-year></span> QMD Property. All rights reserved.</span><span>Figures are indicative only and do not constitute financial advice.</span></div>
   </footer>
 
-  <script src="js/listings-data.js"></script>
+  <script src="js/api.js"></script>
   <script src="js/main.js"></script>
   <script src="js/buy.js"></script>
 </body>

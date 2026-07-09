@@ -95,9 +95,10 @@
           </ul>
         </div>
         <div class="form-card reveal" data-delay="1">
-          <!-- FORMSPREE endpoint (live) — form ID mykawbrk -->
-          <form class="form" action="https://formspree.io/f/mykawbrk" method="POST" data-formspree>
-            <input type="hidden" name="_subject" id="enquiry-subject" value="New property enquiry">
+          <!-- Submits to the QMD Worker -> Mantis leads endpoint -->
+          <form class="form" data-qmd-form="enquiry" data-source="Website Listing Enquiry">
+            <input type="hidden" name="listingID" id="en-listing-id" value="">
+            <input type="hidden" name="listingType" id="en-listing-type" value="">
             <div class="form-success" role="status">Thanks — your enquiry has been sent. We'll be in touch shortly.</div>
             <div class="row">
               <div class="field-group"><label for="en-name">Name</label><input id="en-name" type="text" name="name" required placeholder="Your full name"></div>
@@ -123,7 +124,7 @@
     <div class="container footer__bottom"><span>© <span data-year></span> QMD Property. All rights reserved.</span><span>Figures are indicative only and do not constitute financial advice.</span></div>
   </footer>
 
-  <script src="js/listings-data.js"></script>
+  <script src="js/api.js"></script>
   <script src="js/main.js"></script>
   <script src="js/listing.js"></script>
   <script src="js/calculator.js"></script>

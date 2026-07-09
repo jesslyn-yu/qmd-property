@@ -178,38 +178,37 @@
     </div>
   </footer>
 
-  <script src="js/listings-data.js"></script>
-  <!-- Build the 8-listing featured slideshow from placeholder data.
-       Runs BEFORE main.js so the slides exist when the slideshow initialises. -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <!-- Featured slideshow: up to 8 live listings from the QMD Worker (Mantis). -->
   <script>
     (function () {
       var track = document.getElementById("featured-track");
-      if (!track || typeof QMD_LISTINGS === "undefined") return;
-      var price = function (n) { return "$" + Number(n).toLocaleString("en-AU"); };
-      var featured = QMD_LISTINGS.slice(0, 8);
-      track.innerHTML = featured.map(function (l) {
-        return '<div class="slideshow__slide">' +
-          '<a class="card property" href="listing.html?id=' + l.id + '">' +
-            '<div class="property__media">' +
-              '<img src="' + l.photo + '" alt="' + l.name + '" loading="lazy">' +
-              '<span class="property__type">' + l.type + '</span>' +
-              '<span class="property__yield">' + l.rentalYield.toFixed(1) + '% yield</span>' +
-            '</div>' +
-            '<div class="property__body">' +
-              '<span class="property__suburb">◴ ' + l.suburb + ', Sydney</span>' +
-              '<span class="property__name">' + l.name + '</span>' +
-              '<span class="property__price">' + price(l.price) + '</span>' +
-              '<div class="property__specs"><span>⌂ ' + l.bedrooms + ' bd</span><span>⊹ ' + l.bathrooms + ' ba</span><span>⊞ ' + l.parking + ' car</span></div>' +
-              '<div class="property__stats">' +
-                '<div class="stat-pill"><div class="v">' + l.capRate.toFixed(1) + '%</div><div class="k">Cap rate</div></div>' +
-                '<div class="stat-pill"><div class="v">' + l.roi.toFixed(1) + '%</div><div class="k">ROI</div></div>' +
-                '<div class="stat-pill"><div class="v">' + l.rentalYield.toFixed(1) + '%</div><div class="k">Yield</div></div>' +
+      if (!track || typeof QMDApi === "undefined") return;
+      var hideSection = function () { var s = track.closest("section"); if (s) s.style.display = "none"; };
+      QMDApi.listings({ listingType: "residential" }).then(function (res) {
+        var featured = (res.listings || []).slice(0, 8);
+        if (!featured.length) return hideSection();
+        track.innerHTML = featured.map(function (l) {
+          var photo = l.photos[0] ? l.photos[0].mid : "https://placehold.co/800x560/0d2240/ff7a1a?text=QMD+Property";
+          var loc = [l.suburb, l.state].filter(Boolean).join(", ");
+          return '<div class="slideshow__slide">' +
+            '<a class="card property" href="listing.html?id=' + l.id + '&type=' + encodeURIComponent(l.listingType) + '">' +
+              '<div class="property__media">' +
+                '<img src="' + photo + '" alt="' + (l.heading || l.type) + '" loading="lazy">' +
+                '<span class="property__type">' + l.type + '</span>' +
               '</div>' +
-            '</div>' +
-          '</a></div>';
-      }).join("");
+              '<div class="property__body">' +
+                '<span class="property__suburb">◴ ' + (loc || 'Sydney') + '</span>' +
+                '<span class="property__name">' + (l.heading || l.type) + '</span>' +
+                '<span class="property__price">' + QMDApi.formatPrice(l) + '</span>' +
+                '<div class="property__specs"><span>⌂ ' + l.bedrooms + ' bd</span><span>⊹ ' + l.bathrooms + ' ba</span><span>⊞ ' + l.parking + ' car</span></div>' +
+              '</div>' +
+            '</a></div>';
+        }).join("");
+        if (window.QMD && QMD.initSlideshow) QMD.initSlideshow();
+      }).catch(hideSection);
     })();
   </script>
-  <script src="js/main.js"></script>
 </body>
 </html>

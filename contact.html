@@ -57,9 +57,8 @@
         </div>
 
         <div class="form-card reveal" data-delay="1">
-          <!-- FORMSPREE endpoint (live) — form ID mykawbrk -->
-          <form class="form" action="https://formspree.io/f/mykawbrk" method="POST" data-formspree>
-            <input type="hidden" name="_subject" value="New lead — Contact form">
+          <!-- Submits to the QMD Worker -> Mantis leads endpoint -->
+          <form class="form" data-qmd-form="enquiry" data-source="Website Contact Form">
             <div class="form-success" role="status">Thanks — your message has been sent. A QMD specialist will be in touch within one business day.</div>
             <div class="row">
               <div class="field-group"><label for="c-name">Name</label><input id="c-name" type="text" name="name" required placeholder="Your full name"></div>
@@ -98,6 +97,7 @@
     <div class="container footer__bottom"><span>© <span data-year></span> QMD Property. All rights reserved.</span><span>Figures are indicative only and do not constitute financial advice.</span></div>
   </footer>
 
+  <script src="js/api.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

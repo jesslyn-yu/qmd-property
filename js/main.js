@@ -82,10 +82,13 @@
   }
 
   /* ---------------------------------------------------------------- featured slideshow */
-  var slideshow = document.querySelector("[data-slideshow]");
-  if (slideshow) {
+  QMD.initSlideshow = function () {
+    var slideshow = document.querySelector("[data-slideshow]");
+    if (!slideshow) return;
     var track = slideshow.querySelector(".slideshow__track");
     var slides = slideshow.querySelectorAll(".slideshow__slide");
+    if (!slides.length || slideshow.getAttribute("data-init") === "1") return; // wait for async data / avoid double init
+    slideshow.setAttribute("data-init", "1");
     var dotsWrap = slideshow.querySelector(".slideshow__dots");
     var prevBtn = slideshow.querySelector("[data-prev]");
     var nextBtn = slideshow.querySelector("[data-next]");
@@ -152,62 +155,89 @@
       }, 5000);
       slideshow.addEventListener("mouseenter", function () { clearInterval(timer); });
     }
-  }
+  };
+  QMD.initSlideshow();
 
   /* ---------------------------------------------------------------- year stamp */
   var yearEl = document.querySelectorAll("[data-year]");
   yearEl.forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  /* ---------------------------------------------------------------- Formspree AJAX
-     Progressive enhancement: forms still submit normally if JS fails, but when
-     JS is available we POST via fetch and show an inline success message. */
-  var ajaxForms = document.querySelectorAll("form[data-formspree]");
-  ajaxForms.forEach(function (form) {
+  /* ---------------------------------------------------------------- Lead forms
+     Forms tagged with data-qmd-form POST to the QMD Worker (Mantis). Success or
+     failure is decided by the `status` field Mantis returns ("Success"/"Error"),
+     never silently swallowed. Field names read from the form:
+       name, email, phone, message, investment_budget, property_address,
+       listingID, listingType (hidden, set per listing)
+     Form attributes:
+       data-qmd-form="enquiry" | "appraisal"
+       data-source="..."         (label stored against the lead)
+       data-listing-type="..."   (appraisal default listingType) */
+  var leadForms = document.querySelectorAll("form[data-qmd-form]");
+  leadForms.forEach(function (form) {
     form.addEventListener("submit", function (e) {
-      var action = form.getAttribute("action") || "";
-      // If the Formspree endpoint hasn't been configured yet, just simulate success.
-      var notConfigured = action.indexOf("your-form-id") !== -1 || action === "";
       e.preventDefault();
+      if (typeof QMDApi === "undefined") return;
+
+      var kind = form.getAttribute("data-qmd-form");
       var success = form.querySelector(".form-success");
       var btn = form.querySelector("button[type=submit]");
+      var val = function (n) {
+        var el = form.querySelector('[name="' + n + '"]');
+        return el ? String(el.value).trim() : "";
+      };
 
-      // Lazily create an inline error message (no per-form HTML needed).
-      var showError = function () {
+      var showError = function (msg) {
         var box = form.querySelector(".form-error");
         if (!box) {
           box = document.createElement("div");
           box.className = "form-error";
           box.setAttribute("role", "alert");
-          box.textContent =
-            "Sorry, we couldn't send your message. Please try again, or email us at info@qmdproperty.com.";
           form.insertBefore(box, form.firstChild);
         }
+        box.textContent = msg || "Sorry, we couldn't send your message. Please try again, or email us at info@qmdproperty.com.";
         box.classList.add("show");
       };
-
-      var done = function (ok) {
+      var done = function (ok, msg) {
         var errorBox = form.querySelector(".form-error");
         if (ok) {
           if (success) success.classList.add("show");
           if (errorBox) errorBox.classList.remove("show");
           form.reset();
         } else {
-          showError();
+          showError(msg);
         }
         if (btn) { btn.disabled = false; btn.textContent = btn.getAttribute("data-label") || "Send"; }
       };
       if (btn) { btn.setAttribute("data-label", btn.textContent); btn.disabled = true; btn.textContent = "Sending…"; }
 
-      if (notConfigured) {
-        setTimeout(function () { done(true); }, 500);
-        return;
+      var name = qmdSplitName(val("name"));
+      var payload = { firstName: name.firstName, lastName: name.lastName, email: val("email"), phone: val("phone") };
+      var notes = [];
+      if (val("message")) notes.push(val("message"));
+      if (val("investment_budget")) notes.push("Investment budget: " + val("investment_budget"));
+
+      var apiCall;
+      if (kind === "appraisal") {
+        payload.listingAddress = val("property_address");
+        payload.listingType = form.getAttribute("data-listing-type") || "residential";
+        payload.notes = notes.join("\n");
+        apiCall = QMDApi.appraisal(payload);
+      } else {
+        if (val("property_address")) notes.push("Property address: " + val("property_address"));
+        payload.notes = notes.join("\n");
+        var src = form.getAttribute("data-source");
+        if (src) payload.source = src;
+        if (val("listingID")) payload.listingID = val("listingID");
+        if (val("listingType")) payload.listingType = val("listingType");
+        apiCall = QMDApi.enquiry(payload);
       }
-      fetch(action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
-      })
-        .then(function (r) { done(r.ok); })
+
+      apiCall
+        .then(function (resp) {
+          if (resp && resp.status === "Success") return done(true);
+          var msg = resp && resp.errors && resp.errors[0] && resp.errors[0].message;
+          done(false, msg ? "Couldn't send: " + msg : undefined);
+        })
         .catch(function () { done(false); });
     });
   });
